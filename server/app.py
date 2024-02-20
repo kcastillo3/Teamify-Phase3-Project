@@ -130,7 +130,8 @@ def add_employee():
         employee_name = input("Enter employee name: ")
         employee_position = input("Enter employee position: ")
         employee_email = input("Enter employee email: ")
-        employee = Employee(name=employee_name, position=employee_position, email=employee_email, department_id=department.id)
+        employee_availability = input("Enter employee availability: ") 
+        employee = Employee(name=employee_name, position=employee_position, email=employee_email, availability=employee_availability, department_id=department.id)
         try:
             db.session.add(employee)
             db.session.commit()
@@ -147,7 +148,7 @@ def display_all_employees():
     if employees:
         for employee in employees:
             department = db.session.get(Department, employee.department_id)
-            print(f"{employee.id} | {employee.name} | {employee.position} | {employee.email} | {department.name if department else 'No department'}")
+            print(f"{employee.id} | {employee.name} | {employee.position} | {employee.email} | {employee.availability} | {department.name if department else 'No department'}")
     else:
         print("No employees found.")
     print()
@@ -177,12 +178,15 @@ def update_employee():
         new_name = input("Enter new name (leave blank to keep current): ")
         new_position = input("Enter new position (leave blank to keep current): ")
         new_email = input("Enter new email (leave blank to keep current): ")
+        new_availability = input("Enter new availability (leave blank to keep current): ")
         if new_name:
             employee.name = new_name
         if new_position:
             employee.position = new_position
         if new_email:
             employee.email = new_email
+        if new_availability:
+            employee.availability = new_availability
         try:
             db.session.commit()
             print(f"Updated employee with id {employee_id}")

@@ -16,7 +16,7 @@ class Employee(db.Model):
     def __repr__(self):
         return (
             f"Employee(Id: {self.id}, Name: {self.name}, Address: {self.address}, "
-            f"Email: {self.email}, Position: {self.position}, Availability: {self.availability})"
+            f"Email: {self.email}, Position: {self.position})"
         )
 
 class Department(db.Model):

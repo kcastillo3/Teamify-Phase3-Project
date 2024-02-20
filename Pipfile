@@ -8,9 +8,7 @@ flask = "*"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
 python-dotenv = "*"
-ipdb = "*"
-click = "*"      
-rich = "*"        
+ipdb = "*"       
 
 [dev-packages]
 

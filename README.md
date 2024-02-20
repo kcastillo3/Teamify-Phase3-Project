@@ -24,3 +24,13 @@ Update employee records: Edit details of existing employee records, including ch
 Delete employees: Remove employee records from the system when necessary.
 
 Manage departments: Create new departments, update existing ones, and delete departments, ensuring that employee associations are maintained accurately.
+
+# To Begin:
+
+1. Clone the repository to your local machine using `git clone <repository_url>`.
+2. Navigate to the project directory with `cd <project_directory>`.
+3. Install Pipenv, a tool for managing dependencies and virtual environments, with `pip install pipenv`.
+4. Install the necessary dependencies with `pipenv install`.
+5. Activate the Pipenv shell with `pipenv shell`.
+6. Set up the database by running `python server/seed.py`.
+7. Start the application with `python server/app.py`.

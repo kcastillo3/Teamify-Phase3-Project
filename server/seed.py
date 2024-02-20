@@ -16,7 +16,7 @@ def seed_departments():
 def seed_employees():
     employees = [
         {"name": "Jubin Luke", "address": "123 Main St", "email": "jb@gmail.com", "position": "Store Manager", "availability": "Full-time", "department_name": "Sales Floor"},
-        {"name": "Megan Black", "address": "456 Maple Ave", "email": "meganb@yahoo.com", "position": "Assistant Store Manager in Training", "availability": "Full-time", "department_name": "Sales Floor"},
+        {"name": "Megan Black", "address": "456 Maple Ave", "email": "meganb@yahoo.com", "position": "Assistant Store Manager", "availability": "Full-time", "department_name": "Sales Floor"},
         {"name": "Caleb O'Leary", "address": "789 Oak Dr", "email": "olearycaleb@protonmail.com", "position": "Assistant Store Manager", "availability": "Full-time", "department_name": "Sales Floor"},
         {"name": "Kevin Castillo", "address": "321 Pine St", "email": "kevinc@gmail.com", "position": "Assistant Store Manager", "availability": "Full-time", "department_name": "Sales Floor"},
         {"name": "Lauren Warwick", "address": "654 Elm Ave", "email": "lwarwick@yahoo.com", "position": "Sales Associate", "availability": "Part-time", "department_name": "Sales Floor"},

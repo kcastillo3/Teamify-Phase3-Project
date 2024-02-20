@@ -7,8 +7,11 @@ def get_all_departments():
 def display_all_departments():
     departments = get_all_departments()
     if departments:
+        print(f"{'ID':<4} | {'Department Name':<20}")
+        print("-" * 26)  
+
         for department in departments:
-            print(f"{department.id} | {department.name}")
+            print(f"{department.id:<4} | {department.name:20}")
     else:
         print("No departments found.")
     print()
@@ -146,12 +149,18 @@ def add_employee():
 def display_all_employees():
     employees = Employee.query.all()
     if employees:
+        header = f"{'ID':<4} | {'Name':<20} | {'Position':<25} | {'Email':<30} | {'Availability':<15} | {'Department':<20}"
+        print(header)
+        print("-" * len(header))
+
         for employee in employees:
             department = db.session.get(Department, employee.department_id)
-            print(f"{employee.id} | {employee.name} | {employee.position} | {employee.email} | {employee.availability} | {department.name if department else 'No department'}")
+            department_name = department.name if department else 'No department'
+            print(f"{employee.id:<4} | {employee.name:20} | {employee.position:25} | {employee.email:30} | {employee.availability:15} | {department_name:20}")
     else:
         print("No employees found.")
     print()
+
 
 def delete_employee():
     display_all_employees()

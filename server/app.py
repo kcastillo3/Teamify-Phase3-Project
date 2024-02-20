@@ -104,12 +104,18 @@ def find_employee_by_id(employee_id):
     return employee
 
 def add_employee_to_department(department, employee_id):
-    employee = find_employee_by_id(employee_id)
+    department_id = department.id  # Get the id of the department
+    employee_id = int(employee_id)  # Ensure employee_id is an integer
+
+    employee = db.session.get(Employee, employee_id)
     if employee:
-        employee.department_id = department.id
+        old_department_id = employee.department_id
+        employee.department_id = department_id
         try:
             db.session.commit()
-            print(f"Moved {employee.name} to {department.name}")
+            old_department = db.session.get(Department, old_department_id) if old_department_id else None
+            new_department = db.session.get(Department, department_id)
+            print(f"Moved {employee.name} from {old_department.name if old_department else 'No department'} to {new_department.name}")
         except Exception as e:
             db.session.rollback()
             print(f"Error moving employee to department: {e}")
@@ -140,7 +146,8 @@ def display_all_employees():
     employees = Employee.query.all()
     if employees:
         for employee in employees:
-            print(f"{employee.id} | {employee.name} | {employee.position} | {employee.email}")
+            department = db.session.get(Department, employee.department_id)
+            print(f"{employee.id} | {employee.name} | {employee.position} | {employee.email} | {department.name if department else 'No department'}")
     else:
         print("No employees found.")
     print()

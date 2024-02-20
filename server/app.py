@@ -104,8 +104,8 @@ def find_employee_by_id(employee_id):
     return employee
 
 def add_employee_to_department(department, employee_id):
-    department_id = department.id  # Get the id of the department
-    employee_id = int(employee_id)  # Ensure employee_id is an integer
+    department_id = department.id  
+    employee_id = int(employee_id)  
 
     employee = db.session.get(Employee, employee_id)
     if employee:

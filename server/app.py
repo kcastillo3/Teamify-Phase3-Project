@@ -134,7 +134,7 @@ def add_employee_to_department(department, employee_id):
 
 def add_employee():
     display_all_departments()
-    department_id = input("Enter department id: ")
+    department_id = input("Enter the ID of the department to add a new employee to: ")
     department = find_department_by_id(department_id)
     if department:
         employee_name = input("Enter employee name: ")
@@ -242,12 +242,15 @@ if __name__ == "__main__":
                     show_departments_employees()
                 elif choice == '4':
                     display_all_departments()
-                    display_all_employees() 
-                    department_id = input("Enter department id: ")
+                    display_all_employees()
+                    print("Choose the department to move the employee to:")
+                    department_id = input("Enter department ID: ")
                     department = find_department_by_id(department_id)
                     if department:
-                        employee_id = input("Enter employee id: ")
+                        employee_id = input("Enter employee ID to move: ")
                         add_employee_to_department(department, employee_id)
+                    else:
+                        print("Invalid department ID.")
                 elif choice == '5':
                     break
                 else:

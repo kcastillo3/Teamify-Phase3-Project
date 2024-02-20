@@ -40,22 +40,29 @@ def show_departments_employees():
     department = find_department_by_id(department_id)
     if department:
         if department.employees:
+            header = f"{'ID':<4} | {'Name':<20} | {'Position':<25} | {'Email':<30} | {'Availability':<15} | {'Department':<20}"
+            print(header)
+            print("-" * len(header))
             for employee in department.employees:
-                print(f"{employee.id} | {employee.name} | {employee.position} | {employee.email}")
+                print(f"{employee.id:<4} | {employee.name:20} | {employee.position:25} | {employee.email:30} | {employee.availability:15} | {department.name:20}")
         else:
             print("No employees in this department.")
     press_enter_to_continue()
 
 def add_department():
     department_name = input("Enter department name: ")
-    new_department = Department(name=department_name)
-    try:
-        db.session.add(new_department)
-        db.session.commit()
-        print(f"Added department {department_name}")
-    except Exception as e:
-        db.session.rollback()
-        print(f"Error adding department: {e}")
+    existing_department = Department.query.filter_by(name=department_name).first()
+    if existing_department:
+        print("Department with this name already exists.")
+    else:
+        new_department = Department(name=department_name)
+        try:
+            db.session.add(new_department)
+            db.session.commit()
+            print(f"Added department {department_name}")
+        except Exception as e:
+            db.session.rollback()
+            print(f"Error adding department: {e}")
     press_enter_to_continue()
 
 def delete_department():
